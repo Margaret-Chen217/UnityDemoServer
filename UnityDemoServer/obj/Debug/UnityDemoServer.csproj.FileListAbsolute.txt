@@ -1,0 +1,10 @@
+E:\UnityProject\UnityDemoServer\UnityDemoServer\bin\Debug\UnityDemoServer.exe
+E:\UnityProject\UnityDemoServer\UnityDemoServer\bin\Debug\UnityDemoServer.pdb
+E:\UnityProject\UnityDemoServer\UnityDemoServer\bin\Debug\Newtonsoft.Json.dll
+E:\UnityProject\UnityDemoServer\UnityDemoServer\bin\Debug\Newtonsoft.Json.xml
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.csproj.AssemblyReference.cache
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.csproj.SuggestedBindingRedirects.cache
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.csproj.CoreCompileInputs.cache
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.csproj.CopyComplete
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.exe
+E:\UnityProject\UnityDemoServer\UnityDemoServer\obj\Debug\UnityDemoServer.pdb
