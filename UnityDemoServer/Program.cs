@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 
-
-namespace UnityDemo_2023_7_Server
+namespace UnityDemoServer
 {
     public class PlayerInfo
     {
@@ -52,10 +50,10 @@ namespace UnityDemo_2023_7_Server
 
         public static void Main(string[] args)
         {
-            Thread waitClientConnect = new Thread(new ThreadStart(waitClient));
+            Thread waitClientConnect = new Thread(waitClient);
             waitClientConnect.Start();
 
-            Thread sendMessageToClient = new Thread(new ThreadStart(AutoSendAllMessageToClient));
+            Thread sendMessageToClient = new Thread(AutoSendAllMessageToClient);
             sendMessageToClient.Start();
 
             while (true)
@@ -87,13 +85,12 @@ namespace UnityDemo_2023_7_Server
         /// <param name="message"></param>
         private static void HandleMessage(Message message)
         {
-            Console.WriteLine($"Message:  {message}");
+            Console.WriteLine($"Recieve Message:  {message}");
             switch (message.type)
             {
                 case "UpdatePlayerInfo":
                     PlayerInfo playerInfo = JsonConvert.DeserializeObject<PlayerInfo>(message.info);
                     UpdatePlayerInfo(playerInfo);
-                    Console.WriteLine((object)playerInfo);
                     break;
 
                 case "UpdateAllPlayerInfo":
@@ -170,7 +167,7 @@ namespace UnityDemo_2023_7_Server
 
                         lock (toDoListLock)
                         {
-                            Console.WriteLine($"Enqueue Message: {message}");
+                            //Console.WriteLine($"Enqueue Message: {message}");
                             todoList.Enqueue(message);
                         }
                     }
@@ -191,7 +188,7 @@ namespace UnityDemo_2023_7_Server
                     {
                         Message message = new Message("UpdateAllPlayerInfo", "");
                         todoList.Enqueue(message);
-                        Console.WriteLine($"Enqueue Message: {message}");
+                        //Console.WriteLine($"Enqueue Message: {message}");
                     }
                 }
 
@@ -201,10 +198,11 @@ namespace UnityDemo_2023_7_Server
 
         static void SendMessage(Socket client, Message message)
         {
+            Console.WriteLine($"Send Message : {message}");
             string str = JsonConvert.SerializeObject(message);
             byte[] bytes = Encoding.Default.GetBytes(str + "&");
             client.Send(bytes);
-            Console.WriteLine($"Send: {str}");
+            Console.WriteLine($"Send bytes: {str}");
         }
     }
 }
